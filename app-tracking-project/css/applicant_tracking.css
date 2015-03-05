@@ -1,0 +1,192 @@
+html, body {
+	height: 100%;
+}
+
+#container {
+	padding-top: 5em;
+	top: -2em;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 5em;
+}
+
+#col-right {
+	/*
+	clear: left;
+	float: right;
+	*/
+	display: inline-block;
+	vertical-align: top;
+	width: 15%;
+}
+
+#col-left {
+	/*
+	float: left;
+	*/
+	display: inline-block;
+	vertical-align: top;
+	width: 82%;
+	padding-left: 1em;
+	margin-right: 2em;
+}
+
+/* Sidebar */
+#update-bar {
+	margin-right: 1em;
+	margin-top: 0em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	height: auto;
+	background-color: white;
+	-webkit-box-shadow: 0 0 5px #888;
+	   -moz-box-shadow: 0 0 5px #888;
+	        box-shadow: 0 0 5px #888;
+}
+
+#update-bar table {
+	font-size: 0.85em;
+	text-align: left;
+}
+
+#update-bar h4 {
+	text-align: center;
+}
+
+#update-button {
+	position: relative;
+	margin-left: 6em;
+}
+/* End sidebar */
+
+/* Applicant table */
+.applicants {
+	padding-top: 1em;
+	margin-bottom: 1em;
+}
+
+.applicants form, #deleted-applicants form {
+	padding-bottom: 1em;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: 1.5px;
+}
+
+.applicants h2, #deleted-applicants h2 {
+	text-align: center;
+}
+
+#deleted-applicants {
+	padding-top: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+/* End applicant table */
+
+/* Begin Nav bar 11/25/14 - something messing up the navbar links on everything but deleted.php */
+#navbar {
+	position: relative;
+	padding-top: 0.3em;
+	height: 2em;
+	width: 100%;
+	z-index: 1;
+	background-color: black;
+	-webkit-box-shadow: 0 0 15px #888;
+	   -moz-box-shadow: 0 0 15px #888;
+			box-shadow: 0 0 15px #888;
+}
+
+#navbar ul {
+	list-style: none;
+}
+
+#navbar ul a {
+	color: white;
+}
+
+
+#left-links {
+	float: left;
+}
+
+#left-links li {
+	display: inline-block;
+	margin-left: 2em;
+	color: white;
+}
+
+#right-links {
+	float: right;
+}
+
+#right-links li {
+	display: inline-block;
+	margin-right: 2em;
+	color: white;
+}
+/* End Nav bar */
+
+.centered {
+	padding: 1em 1em 1em 1em;
+	width: 60%;
+	margin: auto;
+	border: white 1px solid;
+    border-radius: 10px;
+	-webkit-box-shadow: 0 0 25px #888;
+	   -moz-box-shadow: 0 0 25px #888;
+			box-shadow: 0 0 25px #888;
+}
+
+.centered h1, h3 {
+	text-align: center;
+}
+
+.centered label {
+	position: relative;
+	display: inline-block;
+    width: 250px;
+    text-align: right;
+    margin-left: 5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.centered input {
+	display: inline-block;
+	margin-top: 0.5em;
+}
+
+.centered-button {
+	clear: both;
+	margin-bottom: 2em;
+}
+
+.error-msg {
+	text-align: center;
+	position: relative;
+	width: 15%;
+	margin: auto;
+	top: 5em;
+}
+
+.error-text {
+	position: relative;
+	width: 250px;
+	text-align: right;
+	margin-left: 5em;
+	margin-top: 1em;
+	color: red;
+	font-weight: bold;
+}
+
+#footer {
+	position: absolute;
+	height: 2em;
+	bottom: 0;
+	background-color: black;
+	width: 100%;
+	-webkit-box-shadow: 0 0 15px #888;
+	   -moz-box-shadow: 0 0 15px #888;
+			box-shadow: 0 0 15px #888;
+}
+
