@@ -1,1 +1,5 @@
-A limited applicant tracking system built mainly in PHP. Demo can be seen as jasonmajors.net/app-tracking-project
+A limited applicant tracking system projectbuilt mainly in PHP. Demo can be seen as www.jasonmajors.net/app-tracking-project
+
+username: user01
+password: password01
+
