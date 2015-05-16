@@ -21,9 +21,6 @@ html, body {
 }
 
 #col-left {
-	/*
-	float: left;
-	*/
 	display: inline-block;
 	vertical-align: top;
 	width: 82%;
