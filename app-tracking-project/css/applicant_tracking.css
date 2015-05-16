@@ -11,10 +11,6 @@ html, body {
 }
 
 #col-right {
-	/*
-	clear: left;
-	float: right;
-	*/
 	display: inline-block;
 	vertical-align: top;
 	width: 15%;
