@@ -1,6 +1,6 @@
 <?php require 'plugins/PHPMailer-master/PHPMailerAutoload.php'; 
 
-// Wrapper to send confirmation emails.
+// Wrapper to send confirmation emails. Not working 5/24/15
 class EmailWrap
 {
 	private $email;

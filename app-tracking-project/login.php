@@ -3,7 +3,7 @@
     require 'Database.class.php';
     require 'FormValidate.class.php';
     require 'Authenticate.class.php';
-    require 'plugins/password_compat-master/lib/password.php';
+    require 'plugins/password_compat-master/lib/password.php';	
 	
     // Redirects users already logged in.
 	$auth = new Authenticate();
@@ -75,7 +75,7 @@
 			}	
 		}
 	}
-	// Doesn't work how I want idk.
+		
 	function echo_error_msg($error, $field)
 	{
 		if (isset($error[$field])) {
@@ -86,32 +86,32 @@
 
 	$error = main();
 ?>
-<div id='container'>
-	<div class='centered'>
-		<h1>Login</h1>
-		<!-- Check if the error is the "Invalid login info" string; incomplete/invalid form errors will be a dictionary keyed by the input field -->
-		<?php if (gettype($error) == 'string') {
-			echo "<div class='error-text'>$error</div>";
-		} ?>
-
-		<form method="POST" action="login.php">
+<div class="container">
+		<form class="form-signin" method="POST" action="login.php">
+			<h1 class="form-signin-heading">Login</h1>
+			<!-- Check if the error is the "Invalid login info" string; incomplete/invalid form errors will be a dictionary keyed by the input field -->
+				<?php if (gettype($error) == 'string') {
+					echo "<label class='form-signin-heading jm-error'>$error</label>";
+				} ?>
 			<!-- Display error msg for 'username' not being populated -->
 			<?php if (isset($error['username'])) {
 				$error_msg = ucfirst($error['username']);
-				echo "<label class='error-text'>$error_msg</label>";
+				echo "<label for='username' class='form-singin-heading jm-error'>$error_msg</label>";
 			} ?>
-			<label>Username:</label> <input type="text" name="username" /></br>
+			<label for="username" class="sr-only">Username:</label> 
+			<input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
 
 			<!-- Display error msg for 'password' not being populated -->
 			<?php if (isset($error['password'])) {
 				$error_msg = ucfirst($error['password']);
-				echo "<label class='error-text'>$error_msg</label>";
+				echo "<label for='password' class='form-singin-heading jm-error'>$error_msg</label>";
 			} ?>
 
-			<label>Password:</label> <input type="password" name="password" /></br></br>
+			<label for="password" class="sr-only">Password:</label> 
+			<input type="password" class="form-control" name="password" placeholder="Password" required>
 
-			<input class="centered-button" type="submit" value="Login" /></br></br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		</form>	
-	</div>
-<?php require 'footer.php'; ?>
 </div>
+<?php require 'footer.php'; ?>
+

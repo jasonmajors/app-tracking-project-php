@@ -1,4 +1,4 @@
-<?php
+	<?php
 	class Authenticate
 	{
 		public function login_required_redirect($url, $admin_only=false)

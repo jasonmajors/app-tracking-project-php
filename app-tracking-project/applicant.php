@@ -10,7 +10,7 @@
 	<h1>Open Positions</h1>
 	<ul>
 		<?php
-			// $available is an array of associative arrays (list of dicts!).
+			// $available is an array of associative arrays.
 			foreach($available as $position) {
 				$open_position = $position['Position'];
 

@@ -1,13 +1,15 @@
 <?php require 'header.inc.php'; ?>
 		
 <?php unset($_SESSION); session_destroy(); ?>
-<div id="container">
-	<div class="centered">
-		<h3>JASON'S APPLICANT TRACKING SYSTEM</h3>
-		<h3><a href=<?php echo $PATH . "/employer.php"; ?>>Employer</a></h3>
-		<h3><a href=<?php echo $PATH . "/applicant.php"; ?>>Applicants</a></h3>
+<div class="container">
+	<div class="jumbotron">
+		<h1>App Tracking Demo</h1>
+		<p class="lead">A basic applicant tracking system demonstration</p>
+		<p>
+			<a class="btn btn-lg btn-primary" href=<?php echo $PATH . "/employer.php"; ?> role="button">Employer</a>
+			<a class="btn btn-lg btn-primary" href=<?php echo $PATH . "/applicant.php"; ?> role="button">Apply!</a>
+		</p>
 	</div>
-	<?php require 'footer.php'; ?>	
 </div>	
-	
+<?php require 'footer.php'; ?>
 

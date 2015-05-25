@@ -6,8 +6,8 @@
     require 'plugins/password_compat-master/lib/password.php';
 
     // TODO: Create a main function to clean this up.
-    //$auth = new Authenticate();
-    //$auth->login_required_redirect('/login.php', $admin_only=true);
+    $auth = new Authenticate();
+    $auth->login_required_redirect('/login.php', $admin_only=true);
 
 	// Must be the names of the form inputs.
 	$db_connect = new Database();

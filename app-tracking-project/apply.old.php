@@ -16,10 +16,11 @@
                     "Zipcode" => "text",
                     );
 
-
+    $OTHER = array("Anything_Else" => "text",
+                );
     // Keys will be printed out as category titles.
     $APPLICATION = array("Demographics" => $DEMOGRAPHICS, 
-
+                        "Other" => $OTHER,
                         );
 
 
@@ -56,12 +57,12 @@
                                     "First_Name" => "Open",
                                     "Email" => "Open",
                                     "Phone_Number" => "Phone Number",
+                                    "Work_History" => "Open",
                                     "City" => "Open",
                                     "State" => "Open",
                                     "Zipcode" => "Zipcode",
                                     "Address" => "Open",
                                     "Work_History" => "Open",
-    
                                     );
 
             $validation = new FormValidate($validation_fields);
@@ -89,74 +90,58 @@
 ?>
 
 <!-- Begin HTML application form -->
-
-<div class="jumbotron">
-    <div class="container">
+<div id="container">
+    <div class="centered">
         <h1><?php echo $position; ?></h1>
-    </div>
-</div>
+        <form method="POST" action="apply.php" enctype="multipart/form-data">
 
-<!-- Validation errors -->
-<div class="container">
-   
-    <?php foreach($errors as $err) {
-        echo "<p class='jm-error'>$err</p>";
-    }
-    ?>
+            <?php 
+            // Build the form based on $APPLICATION.
+                foreach($APPLICATION as $key => $value) {
+                    echo "<label><h3>$key</h3></label><br>";
+                    // $k will be the fields, $v will be their type.
+                    foreach ($value as $k => $v) {
+                        $decoded_field = str_replace('_', ' ', $k);
+                        $encoded_field = str_replace(' ', '_', $k);
+                        // Make a session variable to repopulate form fields.
+                        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+                            $_SESSION[$encoded_field] = $_POST[$encoded_field];
+                            $formval = $_SESSION[$encoded_field];
+                            if (isset($errors[$encoded_field]) ) {
+                                $error_msg = $errors[$encoded_field];
+                                echo "<div class='error-text'>$error_msg</div>";
+                            }
 
-</div>
-<!-- End errors -->
-
-<div class="container">
-    <?php 
-    // Build the form based on $APPLICATION.
-    echo '<form class="form-inline" method="POST" action="apply.php" enctype="multipart/form-data">'.PHP_EOL;
-        foreach($APPLICATION as $key => $value) {
-            echo "<h3>$key</h3>".PHP_EOL;
-            // $k will be the fields, $v will be their type.
-            foreach ($value as $k => $v) {
-                $decoded_field = str_replace('_', ' ', $k);
-                $encoded_field = str_replace(' ', '_', $k);
-                // Make a session variable to repopulate form fields.
-                if ($_SERVER['REQUEST_METHOD'] === "POST") {
-                    $_SESSION[$encoded_field] = $_POST[$encoded_field];
-                    $formval = $_SESSION[$encoded_field];
-
-                } else {
-                    if (isset($_SESSION[$encoded_field])) {
-                        $formval = $_SESSION[$encoded_field];
-                    } else {
-                        $formval = '';
+                        } else {
+                            if (isset($_SESSION[$encoded_field])) {
+                                $formval = $_SESSION[$encoded_field];
+                            } else {
+                                $formval = '';
+                            }
+                        }
+                        // End repopulation.
+                        // Echo out the form item.
+                        echo "<label>$decoded_field:</label><input type='$v' name='$encoded_field' value='$formval' /></br>";
                     }
                 }
-                // End repopulation.
-                // Echo out the form item.
-                
-                echo "<div class='form-group'>".PHP_EOL;
-                echo "<label for='$encoded_field' class='sr-only'>$decoded_field:</label>".PHP_EOL;
-                //echo "<div class='col-sm-10'>".PHP_EOL;
-                echo "<input class='form-control input-lg' type='$v' name='$encoded_field' value='$formval' placeholder='$decoded_field'>".PHP_EOL;
-                //  echo "</div>".PHP_EOL;
-                echo "</div>".PHP_EOL;
-            }
-        }
-    ?>  
-        <!-- End form building loop -->
-        <!-- Create textarea -->
+            ?>  
 
-           <br><br><h3>Relevant Work History</h3>
-                <textarea class ='   form-control input-sm' name='Work_History' rows='10' maxlength='20000' placeholder="Copy/Paste resume here"></textarea>
-                <!-- Removing file uploads...
-                    <label>Upload a Resume </label> <input type="file" name="Resume" /></br> 
-                -->
-                <!-- Used to pass the position after a POST request -->
-                <input type="hidden" name="position" value=<?php echo $position_encoded ?>></br>
-                <br><br>
-                <div class="col-md-2">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-                </div>
-            </form>
-            
-            <!-- End form -->
-</div>
+            </br><label><h3>Relevant Work History</h3></label> </br> 
+            <?php if (isset($errors['Work_History'])) {
+                $error_msg = $errors['Work_History'];
+                echo "<div class='error-text'>$error_msg</div>";
+            } ?>
+
+            <label><textarea name='Work_History' rows='20' cols='92' maxlength='20000'></textarea></label>
+            <!-- Removing file uploads...
+                <label>Upload a Resume </label> <input type="file" name="Resume" /></br> 
+            -->
+            <!-- Used to pass the position after a POST request -->
+            <input type="hidden" name="position" value=<?php echo $position_encoded ?>></br>
+            </br><input class="centered-button" type="submit" value="Submit Application"/></br>
+        </form>
+        <!-- End form -->
+    </div>
 <?php require 'footer.php'; ?>
+</div>
+

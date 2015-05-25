@@ -77,6 +77,9 @@ html, body {
 /* End applicant table */
 
 /* Begin Nav bar 11/25/14 - something messing up the navbar links on everything but deleted.php */
+
+/*
+
 #navbar {
 	position: relative;
 	padding-top: 0.3em;
@@ -130,9 +133,11 @@ html, body {
 			box-shadow: 0 0 25px #888;
 }
 
+/*
 .centered h1, h3 {
 	text-align: center;
 }
+*/
 
 .centered label {
 	position: relative;
@@ -172,6 +177,7 @@ html, body {
 	font-weight: bold;
 }
 
+/*
 #footer {
 	position: absolute;
 	height: 2em;
