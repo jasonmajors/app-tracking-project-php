@@ -1,9 +1,9 @@
 <?php
-    require 'header.inc.php';
-    require 'Database.class.php';
-    require 'FormValidate.class.php';
-    require 'Authenticate.class.php';
-    require 'plugins/password_compat-master/lib/password.php';	
+	require 'header.inc.php';
+    require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/classes/Database.class.php';
+    require __DIR__ . '/classes/FormValidate.class.php';
+    require __DIR__ . '/classes/Authenticate.class.php';
 	
     // Redirects users already logged in.
 	$auth = new Authenticate();

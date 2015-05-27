@@ -1,10 +1,10 @@
 <?php
+    require __DIR__ . '/vendor/autoload.php';
     require 'header.inc.php';
-    require 'Database.class.php';
-    require 'FormValidate.class.php';
-    require 'Authenticate.class.php';
-    require 'plugins/password_compat-master/lib/password.php';
-
+    require __DIR__ . '/classes/Database.class.php';
+    require __DIR__ . '/classes/FormValidate.class.php';
+    require __DIR__ . '/classes/Authenticate.class.php';
+    
     // TODO: Create a main function to clean this up.
     $auth = new Authenticate();
     $auth->login_required_redirect('/login.php', $admin_only=true);

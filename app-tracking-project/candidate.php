@@ -1,7 +1,7 @@
 <?php
     require 'header.inc.php';
-    require 'Authenticate.class.php';
-    require 'Database.class.php';
+    require __DIR__ . '/classes/Authenticate.class.php';
+    require __DIR__. '/classes/Database.class.php';
     //require 'EmailWrap.class.php';
 
     $auth = new Authenticate();

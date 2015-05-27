@@ -1,6 +1,6 @@
 <?php 	
 	require 'header.inc.php'; 
-    require 'EmailWrap.class.php';
+    require __DIR__ . '/classes/EmailWrap.class.php';
 
 
 	if ($_SESSION['app_submitted']): ?>

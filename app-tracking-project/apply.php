@@ -1,8 +1,8 @@
 <?php
 //TODO - FIX ERROR MSG CSS
     require 'header.inc.php';
-    require 'FormValidate.class.php';
-    require 'Database.class.php';
+    require __DIR__ . '/classes/FormValidate.class.php';
+    require __DIR__ . '/classes/Database.class.php';
 
 
     // Key will be used as the html input name and Value will be used as the type.

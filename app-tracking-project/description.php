@@ -1,6 +1,6 @@
 <?php
 	require 'header.inc.php';
-	require 'Database.class.php';
+	require __DIR__ . '/classes/Database.class.php';
 	require 'jobdescriptions.php';
 
 	function get_available()

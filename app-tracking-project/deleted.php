@@ -1,9 +1,9 @@
 <?php
     require 'header.inc.php';
-    require 'Database.class.php';
+    require __DIR__ . '/classes/Database.class.php';
     // Array of all positions.
     include 'positions.php';
-    require 'Authenticate.class.php';
+    require __DIR__ . '/classes/Authenticate.class.php';
     
 
     $auth = new Authenticate();
