@@ -45,11 +45,6 @@ html, body {
 #update-bar h4 {
 	text-align: center;
 }
-
-#update-button {
-	position: relative;
-	margin-left: 6em;
-}
 /* End sidebar */
 
 /* Applicant table */
@@ -64,16 +59,10 @@ html, body {
 	border-bottom-style: solid;
 	border-bottom-width: 1.5px;
 }
-
-.applicants h2, #deleted-applicants h2 {
-	text-align: center;
+.applicants a {
+	color: black;
 }
 
-#deleted-applicants {
-	padding-top: 1em;
-	margin-left: 1em;
-	margin-right: 1em;
-}
 /* End applicant table */
 
 /* Begin Nav bar 11/25/14 - something messing up the navbar links on everything but deleted.php */

@@ -119,70 +119,77 @@
 
 
 <!-- Begin Container -->
-<div id="container">
-    <!-- Begin Dashboard tables -->
-    <div id="col-left">
-    <!-- pending applicants -->
-        <?php
-            if (!empty($pending)): 
-        ?>
-            <div class="applicants">
-                <h2>Pending Applicants</h2></br>
-                <form action="employer.php" method="POST">
-                    <table id="apps" class="display">
-                        <?php echo build_table($HEADERS, $pending, "Submission Date"); ?> 
-                    </table></br> 
-                    </br><input type="submit" value="Delete Selected" /></br> 
-                </form>
-            </div>  
-         
-        <?php else: ?> <!-- Handle case where no pending applicants -->            
-            <div class="applicants">
-                <h2>No Pending Applications</h2>
-            </div>            
-        <?php endif; ?>
-        <!-- scheduled for interviews -->
-        <?php if (!empty($interview)): ?>
-            <div class="applicants">
-                <h2>Interviews</h2></br>
-                <form action="employer.php" method="POST">
-                    <table id="interviews" class="display">
-                        <?php echo build_table($HEADERS, $interview, "Interview Time"); ?>
-                    </table></br> 
-                    </br><input type="submit" value="Delete Selected" /></br> 
+<div class="container-fluid">
+    <div class="row">
+        <!-- Begin Dashboard tables -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <!-- pending applicants -->
+        <h1 class="page-header text-center">Dashboard</h1>
+            <?php
+                if (!empty($pending)): 
+            ?>
+                <div class="applicants">
+                    <h2>Pending Applications</h2></br>
+                    <form action="employer.php" method="POST">
+                        <div class="table-responsive">    
+                            <table id="apps" class="display">
+                                <?php echo build_table($HEADERS, $pending, "Submission Date"); ?> 
+                            </table></br> 
+                            </br><button type="submit" class="btn btn-primary">Delete Selected</button></br> 
+                        </div>    
+                    </form>
+                </div>  
+             
+            <?php else: ?> <!-- Handle case where no pending applicants -->            
+                <div class="applicants">
+                    <h2>No Pending Applications</h2>
+                </div>            
+            <?php endif; ?>
+            <!-- scheduled for interviews -->
+            <?php if (!empty($interview)): ?>
+                <div class="applicants">
+                    <h2>Interviews</h2></br>
+                    <form action="employer.php" method="POST">
+                        <div class="table-responsive">
+                            <table id="interviews" class="display">
+                                <?php echo build_table($HEADERS, $interview, "Interview Time"); ?>
+                            </table></br> 
+                            </br><button type="submit" class="btn btn-primary">Delete Selected</button></br> 
+                        </div>
+                    </form>
+                </div>             
+            <?php else: ?>
+                <div class="applicants">
+                    <h2>No Scheduled Interviews</h2>
+                </div>     
+            <?php endif; ?>
+            <!-- scheduled for processing -->
+            <?php if (!empty($work_permit)): ?>
+                <div class="applicants">
+                    <h2>Scheduled for Processing</h2></br>
+                    <form action="employer.php" method="POST">
+                        <div class="table-responsive">
+                            <table id="work_permit" class="display">
+                                <?php echo build_table($HEADERS, $work_permit, "Orientation Date"); ?>
+                            </table></br>
+                            </br><button type="submit" class="btn btn-primary">Delete Selected</button></br>
+                        </div>    
+                    </form>
+                </div> 
+                </br><a href=<?php echo $PATH . "/deleted.php"; ?>>View Deleted</a>   
 
-                </form>
-            </div>             
-        <?php else: ?>
-            <div class="applicants">
-                <h2>No Scheduled Interviews</h2>
-            </div>     
-        <?php endif; ?>
-        <!-- scheduled for processing -->
-        <?php if (!empty($work_permit)): ?>
-            <div class="applicants">
-                <h2>Scheduled for Processing</h2></br>
-                <form action="employer.php" method="POST">
-                    <table id="work_permit" class="display">
-                        <?php echo build_table($HEADERS, $work_permit, "Orientation Date"); ?>
-                    </table></br>
-                    </br><input type="submit" value="Delete Selected" /></br>
-                </form>
-            </div> 
-            </br><a href=<?php echo $PATH . "/deleted.php"; ?>>View Deleted</a>   
-
-        <?php else: ?>
-            <div class="applicants">
-                <h2>No One Scheduled for Processing</h2>
-                </br><a href=<?php echo $PATH . "/deleted.php"; ?>>View Deleted</a> 
-            </div>
-        <?php endif; ?>           
-    </div> <!-- End col-left -->
-
-    <!-- Begin update positions bar -->
-    <div id="col-right">
-        <div id="update-bar">
-            <h4>Update Positions</h4>
+            <?php else: ?>
+                <div class="applicants">
+                    <h2>No One Scheduled for Processing</h2>
+                    </br><a href=<?php echo $PATH . "/deleted.php"; ?>>View Deleted</a> 
+                </div>
+            <?php endif; ?>           
+        </div>
+        <!-- Begin update positions bar -->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="text-center">
+                <h4>Update Positions</h4>
+            </div>    
             <form action="employer.php" method="POST"> 
                 <table class="table">
                     <thead>
@@ -221,10 +228,14 @@
 
                     </tbody>
                 </table>
-                    <input id="update-button" type="submit" name="update_positions" value="Update" />
+
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit" name="update_positions">Update</button>
+                </div>
             </form> 
         </div>
-    </div> <!-- end col-left -->
+    </div>
+</div>
     <!-- End update positions bar-->
 
     <?php require 'footer.php'; ?>

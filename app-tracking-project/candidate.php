@@ -124,25 +124,44 @@
     list($application, $next_status, $error_msg) = main();
 
 ?>    
-<div id="container">
-    <div class="centered">
+<div class="jumbotron">
+    <div class="container">
     	<h1><?php echo $application['First_Name'] . ' ' . $application['Last_Name']; ?></h1>
-    	<h3><?php echo $application['Position']; ?></h3>
-        <h3>Employment History</h3>
-        <pre><?php echo $application['Work_History']; ?></pre></br></br>
-        <h4>Schedule for <?php echo str_replace('_', ' ', $next_status); ?></h4>
-        <!-- show any errors if there are any -->
-        <?php echo "<label class='error-text'>$error_msg</label>"; ?>
-    	<form method="POST" action="candidate.php"> 
-            <label>Select a date:</label> <input type='text' id='datepicker' name='date' /></br>
-            <label>Enter a time:</label> <input type='text' name='time' /></br>
-            <!-- Set the id value so we can still retrieve $application if theres an incomplete
-                POST request -->
-    		<input type='hidden' name='id' value=<?php echo $application['ID']; ?> /></br>
-    		<input type='submit' name='update' value='Confirm' />
-    	</form>
-        </br></br></br><a href=<?php echo $PATH . "/employer.php"; ?>>Return to Dashboard</a>
-
+    	<h2><?php echo $application['Position'] . " Application"; ?></h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">    
+            <h2>Employment History</h2>
+            <pre><?php echo $application['Work_History']; ?></pre></br></br>
+        </div>
+    </div>   
+    <div class="row">
+        <div class="col-md-12">     
+            <h2>Schedule for <?php echo str_replace('_', ' ', $next_status); ?></h2>
+            <!-- show any errors if there are any -->
+        	<form class="form-horizontal" method="POST" action="candidate.php">
+                <?php echo "<div class='jm-error'><p>$error_msg</p></div>"; ?> 
+                <div class="form-group">
+                    <label for="date" class="sr-only">Select a date:</label> 
+                        <div class="col-sm-4">
+                            <input class="form-control" type='text' id='datepicker' name='date' placeholder='Pick a date'/>
+                        </div>
+                </div>        
+                <div class="form-group">        
+                    <label for="time" class="sr-only">Enter a time:</label> 
+                        <div class="col-sm-4">
+                            <input class="form-control" type='text' name='time' placeholder='Enter a time (HH:MM AM/PM)' />
+                        </div>    
+                    <!-- Set the id value so we can still retrieve $application if theres an incomplete
+                        POST request -->
+                </div>        
+            		<input type='hidden' name='id' value=<?php echo $application['ID']; ?> /></br>
+            		<button type='submit' name='update' class='btn btn-primary'>Confirm</button>
+                </div>    
+        	</form>
+        </div>
     </div>	
 <?php require 'footer.php'; ?>
 </div>

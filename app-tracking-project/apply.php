@@ -145,7 +145,7 @@
         <!-- Create textarea -->
 
            <br><br><h3>Relevant Work History</h3>
-                <textarea class ='   form-control input-sm' name='Work_History' rows='10' maxlength='20000' placeholder="Copy/Paste resume here"></textarea>
+                <textarea class ='form-control input-sm' name='Work_History' rows='10' maxlength='20000' placeholder="Copy/Paste resume here"></textarea>
                 <!-- Removing file uploads...
                     <label>Upload a Resume </label> <input type="file" name="Resume" /></br> 
                 -->

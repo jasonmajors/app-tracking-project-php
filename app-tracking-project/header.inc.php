@@ -17,6 +17,10 @@
     		echo '<link href="css/jumbotron.css" rel="stylesheet">';
     	} ;?>
 
+    	<?php if ($_SERVER["REQUEST_URI"] == $PATH . "/employer.php") {
+    		echo '<link href="css/dashboard.css" rel="stylesheet">';
+    	} ;?>
+
     	<link rel="icon" type="image/png" href="media/haneyface.png">
     	<style type="text/css" title="currentStyle">
     		@import "js/DataTables/media/css/demo_table.css";
