@@ -46,13 +46,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<?php if ($loggedin): ?>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
           		</button>
-				<?php if ($loggedin): ?>
 					<span class="navbar-brand">Welcome, <?php echo $firstname; ?></span>
 				<?php else: ?>
 					<a class="navbar-brand" href=<?php echo $PATH; ?>>Applicant Tracking Demo</a>

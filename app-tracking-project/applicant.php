@@ -5,10 +5,13 @@
 	$positions = new Database();
 	$available = $positions->getTable('positions');
 ?>
-<div id='container'>
-	<div class='centered'>
-	<h1>Open Positions</h1>
-	<ul>
+<div class='jumbotron'>
+	<div class='container'>
+		<h1>Open Positions</h1>
+	</div>
+</div>	
+<div class='container'>
+
 		<?php
 			// $available is an array of associative arrays.
 			foreach($available as $position) {
@@ -16,12 +19,13 @@
 
 				$position_url = urlencode($open_position);
 
-				echo "<li><a href=$PATH" . "/description.php?position=$position_url>$open_position</a></li>";
+				echo "<h4><a href=$PATH" . "/description.php?position=$position_url>$open_position</a></h4>";
 			}
 		?>
-	</ul>	
-	</div>
-<?php require 'footer.php'; ?>
+	
 </div>
+
+<?php require 'footer.php'; ?>
+
 
 
