@@ -1,5 +1,5 @@
 <?php
-$positions = array(//"Ball Buster", 
+$positions = array(
                     "Games Dealer",
                     "Game Attendant", 
                     "Cage Cashier",

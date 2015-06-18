@@ -32,7 +32,9 @@
         public function getTable($table, $field='', $condition='') 
         {
             if ($field && $condition) {
-                $statement = $this->_conn->prepare("SELECT * FROM $table WHERE $field = '$condition'");
+                $statement = $this->_conn->prepare("SELECT * FROM $table WHERE $field = :condition");
+                $statement->bindParam(':condition', $condition);
+
             } else {
                 $statement = $this->_conn->prepare("SELECT * FROM $table");
             }
