@@ -15,7 +15,7 @@
 				<a class='btn btn-lg btn-primary' role='button' href=<?php echo $PATH . "/applicant.php"; ?>>Return to Open Positions</a>
 			</p>
 		</div>	
-		<?php //unset($_SESSION['app_submitted']); ?>
+		<?php unset($_SESSION['app_submitted']); ?>
 	<?php else: ?>
 		<h1>404</h1>
 	<?php endif; ?>	
