@@ -5,13 +5,11 @@
         private $file_upload;
         private $errors;
 
-        public function __construct(array $fields, $file_upload='')
-            {
+        public function __construct(array $fields)
+        {
                 $this->fields = $fields;
-                // No more file uploads - fuck that shit
-                $this->file_upload = $file_upload;
                 $this->errors = array();
-            }
+        }
 
 
         public function get_errors()
