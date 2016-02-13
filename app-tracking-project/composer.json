@@ -1,5 +1,6 @@
 {
 	"require": {
-		"ircmaxell/password-compat": "1.0.4"
+		"ircmaxell/password-compat": "1.0.4",
+		"vlucas/phpdotenv": "*"
 	}
 }

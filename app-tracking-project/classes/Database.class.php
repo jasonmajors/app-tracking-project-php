@@ -5,9 +5,8 @@
 
         public function __construct()
         {
-            // USERNAME & PASSWORD defined in settings.php
-            $username = USERNAME;
-            $password = PASSWORD;
+            $username = getenv('DB_USER');
+            $password = getenv('DB_PASS');
 
             try {
                 $this->_conn = new PDO("mysql:host=localhost;dbname=jasonmaj_ats", $username, $password);
