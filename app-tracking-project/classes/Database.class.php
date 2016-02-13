@@ -7,9 +7,11 @@
         {
             $username = getenv('DB_USER');
             $password = getenv('DB_PASS');
+            $host = getenv('DB_HOST');
+            $dbname = getenv('DB_NAME');
 
             try {
-                $this->_conn = new PDO("mysql:host=localhost;dbname=jasonmaj_ats", $username, $password);
+                $this->_conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
             }  catch(PDOException $e) {
                 echo 'ERROR: ' . $e->getMessage();
