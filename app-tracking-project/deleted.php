@@ -34,7 +34,7 @@
                     <?php
                         // TODO: Update in php.ini
                         date_default_timezone_set('America/Los_Angeles');
-    					$media_path = '/opt/lampp/htdocs/test/media/';
+                        $media_path = '/opt/lampp/htdocs/test/media/';
                         
                         foreach($applications as $app)
                         {
@@ -48,12 +48,12 @@
                             
                             // Populate the applicant table.
                             echo "<tr>
-    	                        	<td>$position</td>
-    	                            <td>$last_name</td>
-    	                            <td>$first_name</td>
-    	                            <td>$phone_number</td>
-    	                            <td><a href='mailto:$email'>$email</a></td>
-    	                            <td>$date</td>
+                                    <td>$position</td>
+                                    <td>$last_name</td>
+                                    <td>$first_name</td>
+                                    <td>$phone_number</td>
+                                    <td><a href='mailto:$email'>$email</a></td>
+                                    <td>$date</td>
                                     <td><a href='$PATH/candidate.php?id=$id'>View Profile</a></td>
                                 </tr>";
                         }
