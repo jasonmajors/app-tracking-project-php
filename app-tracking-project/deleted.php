@@ -1,6 +1,6 @@
 <?php
     require 'header.inc.php';
-    require __DIR__ . '/classes/Database.class.php';
+    use Jason\Database;
     // Array of all positions.
     include 'positions.php';
     require __DIR__ . '/classes/Authenticate.class.php';

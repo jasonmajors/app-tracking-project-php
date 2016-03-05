@@ -1,7 +1,7 @@
 	<?php
 	class Authenticate
 	{
-		public function login_required_redirect($url, $admin_only=false)
+		public static function login_required_redirect($url, $admin_only=false)
 	    {	
 	    	include 'settings.php';
 	    	$redirect_path = $PATH . $url;

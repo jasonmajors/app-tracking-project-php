@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Jason\\' => array($baseDir . '/classes'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
 );

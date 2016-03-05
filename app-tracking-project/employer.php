@@ -1,14 +1,14 @@
 <?php
     require 'header.inc.php';
     require __DIR__ . '/classes/Authenticate.class.php';
-    require __DIR__ . '/classes/Database.class.php';
     // Array of all positions named $positions.
     include 'positions.php';
+    
+    use Jason\Database;
 
-
-    $auth = new Authenticate();
-    $auth->login_required_redirect('/login.php');
-
+    
+    Authenticate::login_required_redirect('/login.php');
+    
     $HEADERS = array("Position",
                 "Last Name",
                 "First Name",

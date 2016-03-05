@@ -1,9 +1,8 @@
 <?php
-    require __DIR__ . '/vendor/autoload.php';
     require 'header.inc.php';
-    require __DIR__ . '/classes/Database.class.php';
     require __DIR__ . '/classes/FormValidate.class.php';
     require __DIR__ . '/classes/Authenticate.class.php';
+    use Jason\Database;
     
     // TODO: Create a main function to clean this up.
     $auth = new Authenticate();

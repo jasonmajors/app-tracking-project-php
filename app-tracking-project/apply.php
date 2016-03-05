@@ -2,7 +2,7 @@
 //TODO - FIX ERROR MSG CSS
     require 'header.inc.php';
     require __DIR__ . '/classes/FormValidate.class.php';
-    require __DIR__ . '/classes/Database.class.php';
+    use Jason\Database;
 
 
     // Key will be used as the html input name and Value will be used as the type.

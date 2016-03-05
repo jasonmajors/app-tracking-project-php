@@ -1,7 +1,7 @@
 <?php
 	require 'header.inc.php';
-	require __DIR__ . '/classes/Database.class.php';
 	require 'jobdescriptions.php';
+	use Jason\Database;
 
 	function get_available()
 	{

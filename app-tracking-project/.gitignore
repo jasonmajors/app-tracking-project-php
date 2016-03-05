@@ -2,5 +2,6 @@
 /employer.old.php
 /devemployer.php
 /resetapps.py
+/vendor
 error_log
 .env

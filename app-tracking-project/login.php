@@ -1,10 +1,12 @@
 <?php
+
 	require 'header.inc.php';
     require __DIR__ . '/vendor/autoload.php';
-    require __DIR__ . '/classes/Database.class.php';
+    //require __DIR__ . '/classes/Database.class.php';
     require __DIR__ . '/classes/FormValidate.class.php';
     require __DIR__ . '/classes/Authenticate.class.php';
-	
+
+	use Jason\Database;
     // Redirects users already logged in.
 	$auth = new Authenticate();
 	$auth->redirect_user("/employer.php");

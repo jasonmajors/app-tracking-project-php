@@ -1,14 +1,11 @@
 <?php
     require 'header.inc.php';
     require __DIR__ . '/classes/Authenticate.class.php';
-    require __DIR__. '/classes/Database.class.php';
-    //require 'EmailWrap.class.php';
+    use Jason\Database;
 
-    $auth = new Authenticate();
-    $auth->login_required_redirect('/login.php');
-    date_default_timezone_set('America/Los_Angeles');
+    Authenticate::login_required_redirect('/login.php');
 
-
+    
     function get_application()
     {
         // Get the application ID.
