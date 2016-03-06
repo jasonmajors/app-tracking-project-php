@@ -1,5 +1,6 @@
 <?php 
     require 'header.inc.php';
+    
     use Jason\Database;
 
     $positions = new Database();

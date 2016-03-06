@@ -1,6 +1,7 @@
 <?php
     require 'header.inc.php';
-    require __DIR__ . '/classes/Authenticate.class.php';
+    
+    use Jason\Authenticate;
     use Jason\Database;
 
     Authenticate::login_required_redirect('/login.php');

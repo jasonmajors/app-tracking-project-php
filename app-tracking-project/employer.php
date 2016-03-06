@@ -1,11 +1,10 @@
 <?php
     require 'header.inc.php';
-    require __DIR__ . '/classes/Authenticate.class.php';
     // Array of all positions named $positions.
     include 'positions.php';
     
     use Jason\Database;
-
+    use Jason\Authenticate;
     
     Authenticate::login_required_redirect('/login.php');
     

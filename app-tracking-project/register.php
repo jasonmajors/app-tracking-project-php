@@ -1,18 +1,17 @@
 <?php
     require 'header.inc.php';
-    require __DIR__ . '/classes/FormValidate.class.php';
-    require __DIR__ . '/classes/Authenticate.class.php';
-    use Jason\Database;
     
+    use Jason\Validator;
+    use Jason\Authenticate;
+    use Jason\Database;
     // TODO: Create a main function to clean this up.
-    $auth = new Authenticate();
-    $auth->login_required_redirect('/login.php', $admin_only=true);
+    Authenticate::login_required_redirect('/login.php', $admin_only=true);
 
     // Must be the names of the form inputs.
     $db_connect = new Database();
     $fields = array("firstname" => "text", "lastname" => "text", "username" => "text", "password" => "text");
 
-    $validate = new FormValidate($fields);
+    $validate = new Validator($fields);
     // Checks for POST request.
     $completed_form = $validate->get_form_data();
 

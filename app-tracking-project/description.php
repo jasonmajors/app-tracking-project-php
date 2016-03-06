@@ -1,6 +1,7 @@
 <?php
 	require 'header.inc.php';
 	require 'jobdescriptions.php';
+	
 	use Jason\Database;
 
 	function get_available()

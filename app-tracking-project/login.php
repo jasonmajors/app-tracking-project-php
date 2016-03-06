@@ -1,15 +1,11 @@
 <?php
-
 	require 'header.inc.php';
-    require __DIR__ . '/vendor/autoload.php';
-    //require __DIR__ . '/classes/Database.class.php';
-    require __DIR__ . '/classes/FormValidate.class.php';
-    require __DIR__ . '/classes/Authenticate.class.php';
 
+    use Jason\Validator;
+    use Jason\Authenticate;
 	use Jason\Database;
     // Redirects users already logged in.
-	$auth = new Authenticate();
-	$auth->redirect_user("/employer.php");
+	Authenticate::redirect_user("/employer.php");
 
 	if (isset($_SESSION['Auth_Required_Msg'])) {
 		$login_error = $_SESSION['Auth_Required_Msg'];
@@ -59,7 +55,7 @@
 	{
 		// Must be the names of the form inputs.
 		$fields = array("username" => "Open", "password" => "Open");
-		$validate = new FormValidate($fields);
+		$validate = new Validator($fields);
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Returns associative array of form field => value
 			$completed_form = $validate->get_form_data();	

@@ -1,13 +1,12 @@
 <?php
     require 'header.inc.php';
-    use Jason\Database;
     // Array of all positions.
     include 'positions.php';
-    require __DIR__ . '/classes/Authenticate.class.php';
     
-
-    $auth = new Authenticate();
-    $auth->login_required_redirect('/login.php');
+    use Jason\Database;
+    use Jason\Authenticate;
+    
+    Authenticate::login_required_redirect('/login.php');
 
     $modify_positions = new Database();
     $applications = $modify_positions->getTable('applications', 'App_Status', 'Deleted'); 

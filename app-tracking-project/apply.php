@@ -1,7 +1,8 @@
 <?php
 //TODO - FIX ERROR MSG CSS
     require 'header.inc.php';
-    require __DIR__ . '/classes/FormValidate.class.php';
+    
+    use Jason\Validator;
     use Jason\Database;
 
 
@@ -34,7 +35,7 @@
             // Set neccesary variables for the form.
             $position = $_GET['position'];
             // Don't know what i'm doing here... Will figure it out later.
-            $position_test = new FormValidate(array(''));
+            $position_test = new Validator(array(''));
             if ($position_test->positions($position)) {
                 // Replace the +'s with spaces to display as h3 heading.
                 $position = urldecode($position);
@@ -64,7 +65,7 @@
     
                                     );
 
-            $validation = new FormValidate($validation_fields);
+            $validation = new Validator($validation_fields);
             $completed_app = $validation->validate();
             $errors = $validation->get_errors();
             if ($completed_app) {
