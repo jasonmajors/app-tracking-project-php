@@ -18,7 +18,7 @@
 	{
 		include "settings.php";
 		$connect = new Database();
-		$available_positions = $connect->build_column_array('positions', 'Position');
+		$available_positions = $connect->getDistinctValues('positions', 'Position');
 		$connect = null;
 		
 		$position_url = urlencode($position);

@@ -1,7 +1,5 @@
 <?php
     require 'header.inc.php';
-    // Array of all positions.
-    include 'positions.php';
     
     use Jason\Database;
     use Jason\Authenticate;

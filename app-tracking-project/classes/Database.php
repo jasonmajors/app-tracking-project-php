@@ -48,18 +48,20 @@ class Database
         return $result;
     }
 
-    // Returns a column as a single array.
-    public function build_column_array($table, $column_name)
+    /**
+    * Get distinct values from a column
+    *
+    * @param string $table Name of the table
+    * @param string $column_name
+    * @return array
+    */
+    public function getDistinctValues($table, $column_name)
     {
-        $db_entries = $this->getTable($table=$table);
-        $column_array = array();
-
-        foreach($db_entries as $entry) {
-            $value = $entry[$column_name];
-            $column_array[] = $value;
-        }
+        $statement = $this->_conn->prepare("SELECT DISTINCT($column_name) FROM $table");
+        $statement->execute();
+        $result = $statement->fetch();
         
-        return $column_array; 
+        return $result;
     }
 
     public function register($firstname, $lastname, $username, $password)

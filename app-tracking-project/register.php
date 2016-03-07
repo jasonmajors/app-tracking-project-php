@@ -30,7 +30,7 @@
 
         $db_connect = new Database();
         // Returns an array of every Username in the user table.
-        $usernames = $db_connect->build_column_array('users', 'Username');
+        $usernames = $db_connect->getDistinctValues('users', 'Username');
 
         if (!in_array($username, $usernames)) {
             $password = $completed_form['password'];

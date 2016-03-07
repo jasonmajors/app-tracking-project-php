@@ -1,7 +1,5 @@
 <?php
     require 'header.inc.php';
-    // Array of all positions named $positions.
-    include 'positions.php';
     
     use Jason\Database;
     use Jason\Authenticate;
@@ -92,7 +90,6 @@
 
     function main()
     {
-        include "positions.php";
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_positions'])) {   
             update_positions($positions);
         }
@@ -102,8 +99,6 @@
         }   
 
         $db_connect = new Database();
-        //Uncomment to reset the applications table.
-        //$db_connect->resetApplications();
 
         $pending = $db_connect->getTable($table='applications', $field='App_Status', $condition='Pending'); 
         $interview = $db_connect->getTable($table='applications', $field='App_Status', $condition='Interview');
@@ -203,7 +198,7 @@
                     <?php
                         // Make an array of the open positions.
                         $db_connect = new Database();
-                        $openings = $db_connect->build_column_array('positions', 'Position');
+                        $openings = $db_connect->getDistinctValues('positions', 'Position');
                         $db_connect = null;
                         foreach($positions as $position)
                         {

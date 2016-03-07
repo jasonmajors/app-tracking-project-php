@@ -11,7 +11,6 @@ $positions = array(
                     "Marketing Manager",
                     "Senior Marketing Manager",
                     "Purchasing Agent",
-                    
                     ); 
 
 ?>
