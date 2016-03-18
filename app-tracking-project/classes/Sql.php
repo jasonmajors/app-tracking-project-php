@@ -15,6 +15,7 @@ class Sql
     */
     public function __construct()
     {
+        // Set database information from .env file
         $username = getenv('DB_USER');
         $password = getenv('DB_PASS');
         $host = getenv('DB_HOST');
