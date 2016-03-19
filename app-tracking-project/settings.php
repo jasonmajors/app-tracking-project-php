@@ -2,6 +2,8 @@
 // should make make this a global const
 $PATH = "/app-tracking-project";
 
+define('PATH', '/app-tracking-project');
+
 $positions = array(
             "Games Dealer",
             "Game Attendant", 

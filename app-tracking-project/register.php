@@ -5,7 +5,7 @@
     use Jason\Authenticate;
     use Jason\Database;
     // TODO: Create a main function to clean this up.
-    Authenticate::login_required_redirect('/login.php', $admin_only=true);
+    Authenticate::admin_required_redirect('/login.php');
 
     // Must be the names of the form inputs.
     $db_connect = new Database();

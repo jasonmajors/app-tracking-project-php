@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/settings.php'; ?>
+<?php require_once __DIR__ . '/settings.php'; ?>
 <?php require __DIR__ . '/vendor/autoload.php'; 
     $dotenv = new Dotenv\Dotenv(__DIR__); 
     $dotenv->load();
@@ -12,15 +12,15 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/applicant_tracking.css" rel="stylesheet">
         <!-- load signin.css only on the login.php page -->
-        <?php if ($_SERVER["REQUEST_URI"] == $PATH . "/login.php") {
+        <?php if ($_SERVER["REQUEST_URI"] == PATH . "/login.php") {
             echo '<link href="css/signin.css" rel="stylesheet">';
         } ;?>
         <!-- load the narrow jumbotron css on index and success.php -->
-        <?php if ($_SERVER["REQUEST_URI"] == $PATH . "/" || $_SERVER["REQUEST_URI"] == $PATH . "/success.php") {
+        <?php if ($_SERVER["REQUEST_URI"] == PATH . "/" || $_SERVER["REQUEST_URI"] == PATH . "/success.php") {
             echo '<link href="css/jumbotron.css" rel="stylesheet">';
         } ;?>
 
-        <?php if ($_SERVER["REQUEST_URI"] == $PATH . "/employer.php") {
+        <?php if ($_SERVER["REQUEST_URI"] == PATH . "/employer.php") {
             echo '<link href="css/dashboard.css" rel="stylesheet">';
         } ;?>
 
@@ -58,7 +58,7 @@
                     </button>
                     <span class="navbar-brand">Welcome, <?php echo $firstname; ?></span>
                 <?php else: ?>
-                    <a class="navbar-brand" href=<?php echo $PATH; ?>>Applicant Tracking Demo</a>
+                    <a class="navbar-brand" href=<?php echo PATH; ?>>Applicant Tracking Demo</a>
                 <?php endif; ?> 
             </div>
             <div id="navbar" class="collapse navbar-collapse">

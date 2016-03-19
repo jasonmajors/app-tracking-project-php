@@ -6,8 +6,8 @@
 		<h1>App Tracking Demo</h1>
 		<p class="lead">A basic applicant tracking system demonstration</p>
 		<p>
-			<a class="btn btn-lg btn-primary" href=<?php echo $PATH . "/employer.php"; ?> role="button">Employer</a>
-			<a class="btn btn-lg btn-primary" href=<?php echo $PATH . "/applicant.php"; ?> role="button">Apply!</a>
+			<a class="btn btn-lg btn-primary" href=<?php echo PATH . "/employer.php"; ?> role="button">Employer</a>
+			<a class="btn btn-lg btn-primary" href=<?php echo PATH . "/applicant.php"; ?> role="button">Apply!</a>
 		</p>
 	</div>
 </div>	

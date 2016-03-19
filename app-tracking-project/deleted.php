@@ -31,6 +31,7 @@
                     <?php
                         // TODO: Update in php.ini
                         date_default_timezone_set('America/Los_Angeles');
+                        // TODO: dont hardcode the path
                         $media_path = '/opt/lampp/htdocs/test/media/';
                         
                         foreach($applications as $app)

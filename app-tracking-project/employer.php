@@ -91,6 +91,7 @@
     function main()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_positions'])) {   
+            // $positions from global scope in settings file
             update_positions($positions);
         }
         

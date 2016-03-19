@@ -71,11 +71,11 @@ class Sql
     * @param array Associative array where $key is the column name and $val is the value of interest
     * @return Array of the results with each row as an array of k => v pairs
     */
-    public function selectWhere($table, array $conditions)
+    public function select($table, array $conditions)
     {
-        $prepStatement = $this->getWhereStatement($table, $conditions);
+        list($prepStatement, $executeValues) = $this->getSelectStatement($table, $conditions);
         $statement = $this->_conn->prepare($prepStatement);
-        $statement->execute($conditions);
+        $statement->execute($executeValues);
 
         return $statement->fetchAll();
     }
@@ -84,27 +84,44 @@ class Sql
     * Create a SELECT statement
     *
     * @param string Name of the table to select from
-    * @param array Associative array where $key is the column name and $val is the value of interest
+    * @param array $conditions Associative array where $key is the column name and $val is the value of interest
+    * If $val is an array, the SQL statement will use IN
     * @return string The SQL select statement
     */
-    private function getWhereStatement($table, array $conditions)
+    private function getSelectStatement($table, array $conditions)
     {
-        // Get last key in array
+        // Set the last key in $conditions to $end
         end($conditions);
         $end = key($conditions);
+        // Reset the pointer
         reset($conditions);
-
+        
         $prepStatement = "SELECT * FROM $table WHERE ";
-
-        foreach(array_keys($conditions) as $key) {
-            // End of array, don't need the AND
-            if ($key === $end) {
-                $prepStatement .= $key . ' = ' . ':' . $key;
+        $executeValues = array();
+        
+        foreach($conditions as $key => $value) {
+            // If $value is an array, build IN statement
+            if (is_array($value)) {
+                // Merge the $value array containing the values for the IN statement execution
+                $executeValues = array_merge($executeValues, $value);
+                $placeholders = rtrim(str_repeat('?, ', count($value)), ' ,'); 
+                if ($key === $end ) {
+                    $prepStatement .= $key . " IN ($placeholders)";
+                } else {
+                    $prepStatement .= $key . " IN ($placeholders) AND ";
+                }
+            // Value is not an array, basic WHERE column = value statement 
             } else {
-                $prepStatement .= $key . ' = ' . ':' . $key . ' AND '; 
-            }
+                if ($key == $end ) {
+                    $prepStatement .= $key . ' = ' . '?';
+                } else {
+                    $prepStatement .= $key . ' = ' . '?' . ' AND ';
+                }
+                // Add the value to be executed into the placeholder
+                $executeValues[] = $value;
+            }    
         }
-        return $prepStatement;
+        return array($prepStatement, $executeValues);
     }
 
 }
