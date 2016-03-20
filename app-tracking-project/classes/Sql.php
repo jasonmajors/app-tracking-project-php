@@ -58,8 +58,8 @@ class Sql
         }
 
         $prepStatement = "INSERT INTO $table (" .
-                        implode(", ", array_keys($data)) . ") VALUES (" .
-                        implode(", ", $sqlVals) . ")";
+                        join(", ", array_keys($data)) . ") VALUES (" .
+                        join(", ", $sqlVals) . ")";
 
         return $prepStatement;
     }
@@ -90,12 +90,6 @@ class Sql
     */
     private function getSelectStatement($table, array $conditions)
     {
-        // Set the last key in $conditions to $end
-        end($conditions);
-        $end = key($conditions);
-        // Reset the pointer
-        reset($conditions);
-        
         $prepStatement = "SELECT * FROM $table WHERE ";
         $executeValues = array();
         
@@ -105,22 +99,47 @@ class Sql
                 // Merge the $value array containing the values for the IN statement execution
                 $executeValues = array_merge($executeValues, $value);
                 $placeholders = rtrim(str_repeat('?, ', count($value)), ' ,'); 
-                if ($key === $end ) {
-                    $prepStatement .= $key . " IN ($placeholders)";
-                } else {
-                    $prepStatement .= $key . " IN ($placeholders) AND ";
-                }
+                $prepStatement .= $key . " IN ($placeholders) AND ";
             // Value is not an array, basic WHERE column = value statement 
             } else {
-                if ($key == $end ) {
-                    $prepStatement .= $key . ' = ' . '?';
-                } else {
-                    $prepStatement .= $key . ' = ' . '?' . ' AND ';
-                }
+                $prepStatement .= $key . ' = ' . '?' . ' AND ';
                 // Add the value to be executed into the placeholder
                 $executeValues[] = $value;
             }    
         }
+        // Remove the trailing 'AND';
+        $prepStatement = rtrim($prepStatement, 'AND ');
+
+        return array($prepStatement, $executeValues);
+    }
+
+    public function update($table, array $updates, array $conditions)
+    {
+        list($prepStatement, $executeValues) = $this->getUpdateStatement($table, $updates, $conditions);
+        $statement = $this->_conn->prepare($prepStatement);
+        $statement->execute($executeValues);
+    }
+
+    private function getUpdateStatement($table, array $updates, array $conditions)
+    {
+        $executeValues = array();
+        $prepStatement = "UPDATE $table SET ";
+
+        foreach($updates as $key => $value) {
+            $prepStatement .= $key . ' = ' . '?, ';
+            $executeValues[] = $value;
+        }
+        // Get rid of the trailing comma
+        $prepStatement = rtrim($prepStatement, ', ');
+        $prepStatement .= " WHERE ";
+
+        foreach($conditions as $key => $value) {
+            $prepStatement .= $key . ' = '. '?' . ' AND ';
+            $executeValues[] = $value;
+        }
+        // Get rid of the trailing 'AND'
+        $prepStatement = rtrim($prepStatement, 'AND ');
+    
         return array($prepStatement, $executeValues);
     }
 
