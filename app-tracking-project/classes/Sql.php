@@ -113,6 +113,14 @@ class Sql
         return array($prepStatement, $executeValues);
     }
 
+    /**
+    * Create an UPDATE statement 
+    *
+    * @param string Name of the table
+    * @param array $updates An array of ($k => $v)'s that corresponds to column => value changes
+    * @param array $conditions An array containing $k => $v of the rows to apply the updates to
+    * @return bool
+    */
     public function update($table, array $updates, array $conditions)
     {
         list($prepStatement, $executeValues) = $this->getUpdateStatement($table, $updates, $conditions);
