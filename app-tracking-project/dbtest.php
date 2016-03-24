@@ -3,11 +3,13 @@
 
 	use Jason\Sql;
 
-	$conditions = array('Position' => array('Cage Cashier', 'Games Dealer'));
+	$conditions = array('App_Status' => "Pending");
+	$updates = array('Position' => 'Board Person');
 	$db = new Sql();
-	$apps = $db->select('applications', $conditions);
-	foreach($apps as $app) {
-		echo $app['Last_Name'] . '<br>';
-	}
+	try {
+		$db->update('applications', $updates, $conditions);
+	} catch (PDOException $e) {
+        echo 'ERROR: ' . $e->getMessage();
+    }    
 	
 require 'footer.php'; ?>
