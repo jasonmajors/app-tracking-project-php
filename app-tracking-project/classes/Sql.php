@@ -86,7 +86,8 @@ class Sql
     * @param string Name of the table to select from
     * @param array $conditions Associative array where $key is the column name and $val is the value of interest
     * If $val is an array, the SQL statement will use IN
-    * @return string The SQL select statement
+    * @return Array $prepStatement is the SQL statement to execute and $executeValues is an array to pass into 
+    * the execute() function
     */
     private function getSelectStatement($table, array $conditions)
     {
@@ -96,8 +97,10 @@ class Sql
         foreach($conditions as $key => $value) {
             // If $value is an array, build IN statement
             if (is_array($value)) {
-                // Merge the $value array containing the values for the IN statement execution
+                // Merge the $value array containing the values for the IN statement into
+                // the executeValues array
                 $executeValues = array_merge($executeValues, $value);
+                // Create a string with ? for a placeholder for each value in the IN statement
                 $placeholders = rtrim(str_repeat('?, ', count($value)), ' ,'); 
                 $prepStatement .= $key . " IN ($placeholders) AND ";
             // Value is not an array, basic WHERE column = value statement 
@@ -114,7 +117,7 @@ class Sql
     }
 
     /**
-    * Create an UPDATE statement 
+    * Update an entry in the database
     *
     * @param string Name of the table
     * @param array $updates An array of ($k => $v)'s that corresponds to column => value changes
@@ -128,6 +131,16 @@ class Sql
         $statement->execute($executeValues);
     }
 
+    /**
+    * Create an UPDATE statement 
+    *
+    * @param string Name of the table
+    * @param array $updates An array of ($k => $v)'s that corresponds to column => value changes
+    * @param array $conditions An array of $key => $value pairs where $key is the column name
+    * and $value is the value to search for where the rows should be updated
+    * @return Array $prepStatement is the SQL statement to execute and $executeValues is an array to pass into 
+    * the execute() function
+    */
     private function getUpdateStatement($table, array $updates, array $conditions)
     {
         $executeValues = array();
@@ -151,4 +164,41 @@ class Sql
         return array($prepStatement, $executeValues);
     }
 
+    /**
+    * Delete an entries from the database given a set of conditions
+    *
+    * @param string Name of the table
+    * @param array $conditions An array of key => value pairs that correspond to column => value of
+    * entries to delete
+    * @return bool
+    */
+    public function delete($table, array $conditions)
+    {
+        list($prepStatement, $executeValues) = $this->getDeleteStatement($table, $conditions);
+        $statement = $this->_conn->prepare($prepStatement);
+        $statement->execute($executeValues);
+    }
+    /**
+    * Generate a Delete statement given a table and conditions
+    *
+    * @param string Name of the table
+    * @param array $conditions An array of key => value pairs that correspond to column => value of
+    * entries to delete
+    * @return Array $prepStatement is the SQL statement to execute and $executeValues is an array to pass into 
+    * the execute() function
+    */
+    private function getDeleteStatement($table, array $conditions)
+    {
+        $executeValues = array();
+        $prepStatement = "DELETE FROM $table WHERE ";
+
+        foreach($conditions as $key => $value) {
+            $prepStatement .= $key . ' = ' . '?' . ' AND ';
+            $executeValues[] = $value;
+        }
+
+        $prepStatement = rtrim($prepStatement, 'AND ');
+
+        return array($prepStatement, $executeValues);
+    }
 }
