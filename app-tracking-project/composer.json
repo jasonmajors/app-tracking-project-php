@@ -1,7 +1,8 @@
 {
 	"require": {
 		"ircmaxell/password-compat": "1.0.4",
-		"vlucas/phpdotenv": "*"
+		"vlucas/phpdotenv": "*",
+		"jmajors/jaysqlwrap": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {"Jason\\": "classes/"}

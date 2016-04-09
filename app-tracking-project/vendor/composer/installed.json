@@ -95,5 +95,48 @@
             "env",
             "environment"
         ]
+    },
+    {
+        "name": "jmajors/jaysqlwrap",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jasonmajors/jaysqlwrap.git",
+            "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jasonmajors/jaysqlwrap/zipball/f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
+            "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-04-09 02:22:29",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Jaywrap\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jason Majors",
+                "email": "jasonrmajors@gmail.com",
+                "homepage": "https://github.com/jasonmajors"
+            }
+        ],
+        "description": "A basic PHP wrapper for SQL statements",
+        "keywords": [
+            "sql",
+            "wrapper"
+        ]
     }
 ]

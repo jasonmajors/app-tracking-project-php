@@ -1,13 +1,12 @@
 <?php
 	require 'header.inc.php';
 
-	use Jason\Sql;
+	use Jaywrap\Jaywrap;
 
 	$conditions = array('App_Status' => "Pending");
-	$updates = array('Position' => 'Board Person');
-	$db = new Sql();
+	$db = new Jaywrap();
 	try {
-		$db->update('applications', $updates, $conditions);
+		$db->delete('applications', $conditions);
 	} catch (PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
     }    

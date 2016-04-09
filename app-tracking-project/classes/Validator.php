@@ -9,8 +9,8 @@ class Validator
 
     public function __construct(array $fields)
     {
-            $this->fields = $fields;
-            $this->errors = array();
+        $this->fields = $fields;
+        $this->errors = array();
     }
 
 

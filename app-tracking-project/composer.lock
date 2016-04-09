@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1a9a501ea1c7a10871dc24440d475a4",
-    "content-hash": "ad8feaa43b7cd5a475860f0de058034d",
+    "hash": "ab9a6ad8103a8b0dec0eab90da7544f0",
+    "content-hash": "5896cc27739ea90809ae8628787dc7fe",
     "packages": [
         {
             "name": "ircmaxell/password-compat",
@@ -48,6 +48,47 @@
                 "password"
             ],
             "time": "2014-11-20 16:49:30"
+        },
+        {
+            "name": "jmajors/jaysqlwrap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasonmajors/jaysqlwrap.git",
+                "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasonmajors/jaysqlwrap/zipball/f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
+                "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jaywrap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason Majors",
+                    "email": "jasonrmajors@gmail.com",
+                    "homepage": "https://github.com/jasonmajors"
+                }
+            ],
+            "description": "A basic PHP wrapper for SQL statements",
+            "keywords": [
+                "sql",
+                "wrapper"
+            ],
+            "time": "2016-04-09 02:22:29"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -104,7 +145,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jmajors/jaysqlwrap": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

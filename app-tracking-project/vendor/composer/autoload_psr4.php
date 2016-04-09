@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Jaywrap\\' => array($vendorDir . '/jmajors/jaysqlwrap/src'),
     'Jason\\' => array($baseDir . '/classes'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
 );
