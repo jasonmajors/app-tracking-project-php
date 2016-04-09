@@ -2,7 +2,7 @@ apply.old.php
 employer.old.php
 devemployer.php
 resetapps.py
-vendor
 error_log
 .env
 dbtest.php
+composer.lock
