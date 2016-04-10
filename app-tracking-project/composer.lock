@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab9a6ad8103a8b0dec0eab90da7544f0",
-    "content-hash": "5896cc27739ea90809ae8628787dc7fe",
+    "hash": "f566325abd9d9170ed37cebd7a2a5976",
+    "content-hash": "46ffbe90bbf5b3957575ee6cdea5f741",
     "packages": [
         {
             "name": "ircmaxell/password-compat",
@@ -51,16 +51,16 @@
         },
         {
             "name": "jmajors/jaysqlwrap",
-            "version": "dev-master",
+            "version": "0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jasonmajors/jaysqlwrap.git",
-                "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe"
+                "reference": "069aaa5773c6ac94a050274ab64816c8546e1195"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jasonmajors/jaysqlwrap/zipball/f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
-                "reference": "f1a7e3ac6702153c3dde9ef899bf3c04c72b1cfe",
+                "url": "https://api.github.com/repos/jasonmajors/jaysqlwrap/zipball/069aaa5773c6ac94a050274ab64816c8546e1195",
+                "reference": "069aaa5773c6ac94a050274ab64816c8546e1195",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "sql",
                 "wrapper"
             ],
-            "time": "2016-04-09 02:22:29"
+            "time": "2016-04-09 22:49:17"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -145,9 +145,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "jmajors/jaysqlwrap": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
